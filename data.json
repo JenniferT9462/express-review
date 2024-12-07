@@ -1,0 +1,94 @@
+[
+      {
+        "id": 1,
+        "firstName": "Alice",
+        "lastName": "Johnson",
+        "email": "alice.johnson@example.com",
+        "username": "alicejohnson",
+        "age": 28,
+        "isActive": true
+      },
+      {
+        "id": 2,
+        "firstName": "Bob",
+        "lastName": "Smith",
+        "email": "bob.smith@example.com",
+        "username": "bobsmith",
+        "age": 34,
+        "isActive": false
+      },
+      {
+        "id": 3,
+        "firstName": "Charlie",
+        "lastName": "Davis",
+        "email": "charlie.davis@example.com",
+        "username": "charliedavis",
+        "age": 25,
+        "isActive": true
+      },
+      {
+        "id": 4,
+        "firstName": "Dana",
+        "lastName": "Martinez",
+        "email": "dana.martinez@example.com",
+        "username": "danamartinez",
+        "age": 31,
+        "isActive": true
+      },
+      {
+        "id": 5,
+        "firstName": "Ethan",
+        "lastName": "Williams",
+        "email": "ethan.williams@example.com",
+        "username": "ethanwilliams",
+        "age": 45,
+        "isActive": false
+      },
+      {
+        "id": 6,
+        "firstName": "Fiona",
+        "lastName": "Brown",
+        "email": "fiona.brown@example.com",
+        "username": "fionabrown",
+        "age": 29,
+        "isActive": true
+      },
+      {
+        "id": 7,
+        "firstName": "George",
+        "lastName": "Wilson",
+        "email": "george.wilson@example.com",
+        "username": "georgewilson",
+        "age": 38,
+        "isActive": true
+      },
+      {
+        "id": 8,
+        "firstName": "Hannah",
+        "lastName": "Moore",
+        "email": "hannah.moore@example.com",
+        "username": "hannahmoore",
+        "age": 27,
+        "isActive": false
+      },
+      {
+        "id": 9,
+        "firstName": "Ian",
+        "lastName": "Taylor",
+        "email": "ian.taylor@example.com",
+        "username": "iantaylor",
+        "age": 32,
+        "isActive": true
+      },
+      {
+        "id": 10,
+        "firstName": "Jasmine",
+        "lastName": "Anderson",
+        "email": "jasmine.anderson@example.com",
+        "username": "jasmineanderson",
+        "age": 26,
+        "isActive": true
+      }
+    ]
+  
+  
