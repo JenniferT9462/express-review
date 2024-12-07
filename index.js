@@ -1,7 +1,5 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import morgan from 'morgan';
 import helmet from 'helmet';
 //Import data
