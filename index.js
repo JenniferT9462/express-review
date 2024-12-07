@@ -4,6 +4,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import morgan from 'morgan';
 import helmet from 'helmet';
+//Import data
+import data from './data.json' with { type: 'json'};
 
 const app = express();
 
@@ -50,13 +52,25 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     res.render('template', {
         title: 'Welcome to the Express Review',
-        message: 'This is an example of rendering an EJS template!'
+        message: 'This is an example of rendering an EJS template!',
+        users: data
     })
 })
 //Render Form
 app.get('/form', (req, res) => {
     res.render("form")
 })
+
+//Render index
+app.get('/home', (req, res) => {
+    res.render('index', {
+        title: 'Welcome to EJS Home!',
+        message: 'This page dynamically renders using EJS.'
+    })
+   
+})
+
+
 
 app.post('/saveData', (req, res) => {
     const data = req.body;
