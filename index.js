@@ -9,6 +9,13 @@ import data from './data.json' with { type: 'json'};
 
 const app = express();
 
+// Serve static files from the 'public' directory
+app.use('/public', express.static('public'));
+
+// //Set EJS as template engine
+app.use('/views', express.static('views'));
+app.set('view engine', 'ejs')
+
 // create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({ extended: true }))
 //Middleware body-parser
@@ -41,8 +48,6 @@ app.use((req, res, next) => {
     next();
 });
 
-
-
 //Basic route
 // app.get('/', (req, res,) => {
 //     res.send("Welcome to the Express Review!");
@@ -70,8 +75,6 @@ app.get('/home', (req, res) => {
    
 })
 
-
-
 app.post('/saveData', (req, res) => {
     const data = req.body;
     console.log(data);
@@ -87,19 +90,6 @@ app.post('/submit', (req, res) => {
     res.send(`Received data: ${JSON.stringify(data)}`)
 })
 
-
-
-
-
-
-
-// Get the equivalent of __dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-//Set EJS as template engine
-app.set('views', __dirname + '/views')
-app.set('view engine', 'ejs')
 
 //Start the server
 app.listen(3000, () => {
