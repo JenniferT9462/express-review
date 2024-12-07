@@ -1,9 +1,17 @@
 import express from 'express';
+
+//Import middleware npms
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import helmet from 'helmet';
-//Import data
-import data from './data.json' with { type: 'json'};
+
+//Import middlewares
+import { detailsLogger } from './middleware/detailsLogger.js'
+
+//Import controllers
+import { welcomeController } from './controllers/welcomeController.js';
+import { homeController } from './controllers/homeController.js';
+import { formController } from './controllers/formController.js';
 
 const app = express();
 
@@ -19,59 +27,28 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //Middleware body-parser
 app.use(bodyParser.json());
 
-//Morgan middleware - custom format function
-// app.use(morgan((tokens, req, res) => {
-//     return [
-//         tokens.method(req, res),
-//         tokens.url(req, res),
-//         tokens.status(req, res),
-//         tokens.res(req, res, 'content-length'), '-',
-//         tokens['response-time'](req, res), 'ms'
-//     ].join(' ')
-// }))
 //Morgan Middleware - predefined format string - Standard Apache combined log output.
 // Output - :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
 app.use(morgan('combined'));
-//Morgan Middleware - predefined format string - Standard Apache common log output.
-//Output - :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length]
-// app.use(morgan('common'));
 
 //Helmet Middleware
 app.use(helmet());
 
-//Custom middleware that logs request details
-app.use((req, res, next) => {
-    req.time = new Date(Date.now()).toString(); //Current time
-    console.log(req.method, req.hostname, req.path, req.time); //Output: GET localhost / Thu Dec 05 2024 21:24:24 GMT-0600 (Central Standard Time) 'method hostname path time'
-    next();
-});
+//Use details logger middleware
+app.use(detailsLogger);
+
+
+//Render welcome page
+app.get('/', welcomeController);
+//Render home page
+app.get('/home', homeController);
+//Render form page
+app.get('/form', formController)
 
 //Basic route
 // app.get('/', (req, res,) => {
 //     res.send("Welcome to the Express Review!");
 // })
-
-//Route that renders title and message to the template.ejs file
-app.get('/', (req, res) => {
-    res.render('template', {
-        title: 'Welcome to the Express Review',
-        message: 'This is an example of rendering an EJS template!',
-        users: data
-    })
-})
-//Render Form
-app.get('/form', (req, res) => {
-    res.render("form")
-})
-
-//Render index
-app.get('/home', (req, res) => {
-    res.render('index', {
-        title: 'Welcome to EJS Home!',
-        message: 'This page dynamically renders using EJS.'
-    })
-   
-})
 
 app.post('/saveData', (req, res) => {
     const data = req.body;
