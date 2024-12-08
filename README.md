@@ -230,3 +230,47 @@ For this guide I will be using `body-parser`, `morgan` and `helmet` middleware.
         ```js
         //Use details logger middleware
         app.use(detailsLogger);
+
+## Testing
+
+### Test Server Routes
+- Open a web browser or a tool like Postman or cURL to test the routes.
+    - Test the root route `/` by a 'GET' request in Postman with endpoint: http://localhost:3000. 
+    - You should see the message:
+    ```bash
+    Welcome to Express Review!
+
+- Test the `/users` route. It should render an HTML page with a list of users. 
+
+### Testing Middleware
+- Check the console output for `morgan` logs when making requests. For example:
+    ```bash
+    ::1 - - [08/Dec/2024:03:29:38 +0000] "GET / HTTP/1.1" 200 2212 "-" "PostmanRuntime/7.43.0"
+- Verify that your custom middleware logs the details (method, hostname, path, and time) of incoming requests. Example output:
+    ```bash
+    GET localhost / Sat Dec 07 2024 21:29:38 GMT-0600 (Central Standard Time)
+- Verify that the `body-parser` middleware logs the correct data. Example output:
+    ```bash
+    { email: 'jennifertarleton@gmail.com' }
+    Using Body-parser:  jennifertarleton@gmail.com
+- Verify that the `helmet` middleware logs headers when making a request. Example output:
+    ```bash
+    ::ffff:127.0.0.1 - - [08/Dec/2024:03:37:04 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0"
+
+## Acknowledgements
+
+### NPMs
+EJS - <https://www.npmjs.com/package/ejs>
+
+Body-Parser - <https://www.npmjs.com/package/body-parser>
+
+morgan - <https://www.npmjs.com/package/morgan>
+
+helmet - <https://www.npmjs.com/package/helmet>
+
+### Guides
+GeeksforGeeks EJS - <https://www.geeksforgeeks.org/ejs-template-engine-for-express/>
+
+GeeksforGeeks Body-Parser - <https://www.geeksforgeeks.org/body-parser-middleware-in-node-js/>
+
+Body-Parser Guide - <https://www.simplilearn.com/tutorials/nodejs-tutorial/body-parser-in-express-js>
