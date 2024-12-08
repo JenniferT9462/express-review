@@ -15,20 +15,21 @@ import { formController } from './controllers/formController.js';
 
 const app = express();
 
-// Serve static files from the 'public' directory
+//Serve static files from the 'public' directory
 app.use('/public', express.static('public'));
 
-//Set EJS as template engine
+//Serves static files
 app.use('/views', express.static('views'));
+//Set EJS as template engine
 app.set('view engine', 'ejs')
 
-// create application/x-www-form-urlencoded parser
+//Create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({ extended: true }))
 //Middleware body-parser
 app.use(bodyParser.json());
 
 //Morgan Middleware - predefined format string - Standard Apache combined log output.
-// Output - :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
+//Output - :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
 app.use(morgan('combined'));
 
 //Helmet Middleware
