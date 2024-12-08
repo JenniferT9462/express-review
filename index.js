@@ -18,7 +18,7 @@ const app = express();
 // Serve static files from the 'public' directory
 app.use('/public', express.static('public'));
 
-// //Set EJS as template engine
+//Set EJS as template engine
 app.use('/views', express.static('views'));
 app.set('view engine', 'ejs')
 
